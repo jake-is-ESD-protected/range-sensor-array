@@ -1,25 +1,25 @@
 #include "sensor_ir.h"
 uint32_t timings[NUM_SENSORS] = {0};
 
-void IRAM_ATTR pin1_ISR(void){
+void IRAM_ATTR pin4_ISR(void){
 	timings[0] = micros();
 }
 
-void IRAM_ATTR pin2_ISR(void){
+void IRAM_ATTR pin22_ISR(void){
 	timings[1] = micros();
 }
 
-void IRAM_ATTR pin3_ISR(void){
+void IRAM_ATTR pin23_ISR(void){
 	timings[2] = micros();
 }
 
 void init_ISRs(void){
-	pinMode(1, INPUT);
-	attachInterrupt(1, pin1_ISR, RISING);
-	pinMode(2, INPUT);
-	attachInterrupt(2, pin2_ISR, RISING);
-	pinMode(3, INPUT);
-	attachInterrupt(3, pin3_ISR, RISING);
+	pinMode(4, INPUT);
+	attachInterrupt(4, pin4_ISR, RISING);
+	pinMode(22, INPUT);
+	attachInterrupt(22, pin22_ISR, RISING);
+	pinMode(23, INPUT);
+	attachInterrupt(23, pin23_ISR, RISING);
 }
 
 uint32_t trigger(uint32_t len){

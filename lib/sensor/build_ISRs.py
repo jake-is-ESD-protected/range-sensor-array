@@ -1,5 +1,5 @@
-pin_list = [1, 2, 3]
-trig_pin = 20
+pin_list = [4, 22, 23]
+trig_pin = 18
 
 with open("./lib/sensor/sensor_ir.h", "w") as f:
     head = "#ifndef _SENSOR_IR_H_\n" + \

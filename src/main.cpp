@@ -5,6 +5,7 @@
 TaskHandle_t h_sensorLoop = NULL;
 
 void setup(){
+  Serial.begin(115200);
   init_ISRs();
 
   delay(300);

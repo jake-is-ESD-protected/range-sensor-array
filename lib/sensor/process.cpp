@@ -7,6 +7,7 @@ uint32_t get_min(uint32_t* array, uint32_t len){
             min_val = array[i];
         }
     }
+    return min_val;
 }
 
 void sensorLoop(void* p){
@@ -14,7 +15,9 @@ void sensorLoop(void* p){
         uint32_t start = trigger(1);
         vTaskDelay(100 / portTICK_PERIOD_MS);
         uint32_t min_dist = get_min(timings, NUM_SENSORS);
+
         // do stuff with values idk
+        Serial.println(min_dist);
     }
     
 }
