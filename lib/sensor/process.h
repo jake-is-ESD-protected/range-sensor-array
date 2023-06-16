@@ -5,7 +5,7 @@
 
 #define LOW_MAP 0       // lowest distance value
 #define HIGH_MAP 250    // highest distance value (cm)
-#define SWITCH_PIN 15   // pin for manual serial/MIDI change
+#define SWITCH_PIN 15   // pin for manual serial/MIDI change (hardware switch)
 
 /* Get smallest number (positive value) in array.
  
@@ -26,7 +26,7 @@ uint32_t get_min(uint32_t* array, uint32_t len);
 * Notes:
     Does not stop. Initializes MIDI, Serial and the switch pin.
     Sends a rising edge for 1 microsecond and waits for 100
-    milliseconds for all return to arrive. Calculates smallest
+    milliseconds for all return signals to arrive. Calculates smallest
     value from all sensor readings and converts it to CC messages
     or Serial prints
 */
