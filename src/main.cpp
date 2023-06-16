@@ -1,10 +1,11 @@
 #include <Arduino.h>
-#include "sensor.h"
+#include "sensor_ir.h"
+#include "process.h"
 
 TaskHandle_t h_sensorLoop = NULL;
 
 void setup(){
-  initSensor();
+  init_ISRs();
 
   delay(300);
 
