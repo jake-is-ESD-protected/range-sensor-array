@@ -1,3 +1,5 @@
+// THIS FILE IS AUTO-GENERATED
+
 #include "sensor_ir.h"
 uint32_t timings[NUM_SENSORS] = {0};
 

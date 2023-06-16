@@ -1,3 +1,5 @@
+// THIS FILE IS AUTO-GENERATED
+
 #ifndef _SENSOR_IR_H_
 #define _SENSOR_IR_H_
 #include <Arduino.h>

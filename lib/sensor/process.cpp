@@ -9,6 +9,7 @@ uint32_t get_min(uint32_t* array, uint32_t len){
             min_val = array[i];
         }
     }
+    return min_val;
 }
 
 void sensorLoop(void* p){

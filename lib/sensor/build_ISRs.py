@@ -2,7 +2,8 @@ pin_list = [1, 2, 3]
 trig_pin = 20
 
 with open("./lib/sensor/sensor_ir.h", "w") as f:
-    head = "#ifndef _SENSOR_IR_H_\n" + \
+    head = "// THIS FILE IS AUTO-GENERATED\n\n" + \
+           "#ifndef _SENSOR_IR_H_\n" + \
            "#define _SENSOR_IR_H_\n" + \
            "#include <Arduino.h>\n" + \
            f"#define NUM_SENSORS {len(pin_list)}\n" + \
@@ -20,7 +21,8 @@ with open("./lib/sensor/sensor_ir.h", "w") as f:
     f.write(dump)
 
 with open("./lib/sensor/sensor_ir.cpp", "w") as f:
-    head = '#include "sensor_ir.h"\n' + \
+    head = "// THIS FILE IS AUTO-GENERATED\n\n" + \
+           '#include "sensor_ir.h"\n' + \
            "uint32_t timings[NUM_SENSORS] = {0};\n\n"
     
     ir_dump = ""
