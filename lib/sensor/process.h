@@ -6,6 +6,7 @@
 #define LOW_MAP 0       // lowest distance value
 #define HIGH_MAP 250    // highest distance value (cm)
 #define SWITCH_PIN 15   // pin for manual serial/MIDI change (hardware switch)
+#define C 343
 
 /* Get smallest number (positive value) in array.
  

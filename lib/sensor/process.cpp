@@ -18,21 +18,29 @@ void sensorLoop(void* p){
     MIDI.begin(MIDI_CHANNEL_OMNI);
     Serial.begin(115200);
     pinMode(SWITCH_PIN, INPUT);
+    init_ISRs();
+
+    delay(300);
 
     while(1){
-        uint32_t start = trigger(1);
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-        uint32_t min_dist = get_min(timings, NUM_SENSORS);
+        uint32_t start = trigger(2);
+        vTaskDelay(200 / portTICK_PERIOD_MS);
 
-        if(digitalRead(SWITCH_PIN)){
-            MIDI.sendControlChange(0, dist2midi(min_dist), 1);
+        uint32_t min_time = get_min(timings, NUM_SENSORS);
+        float dist = ((float)(min_time - start-2300) * 0.024);
+
+        // bool sw = digitalRead(SWITCH_PIN);
+        bool sw = false;
+
+        if(sw){
+            MIDI.sendControlChange(0, dist2midi(dist), 1);
         }
         else{
             Serial.print("Distance = ");
-            Serial.print(min_dist);
+            Serial.print(dist);
             Serial.println(" cm");
         }
-        vTaskDelay(35 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }
 
