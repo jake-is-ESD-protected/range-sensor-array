@@ -23,7 +23,7 @@ void sensorLoop(void* p){
     delay(300);
 
     while(1){
-        uint32_t start = trigger(2);
+        uint32_t start = trigger(1);
         vTaskDelay(200 / portTICK_PERIOD_MS);
 
         uint32_t min_time = get_min(timings, NUM_SENSORS);
