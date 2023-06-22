@@ -1,5 +1,5 @@
-pin_list = [32, 33, 34]
-trig_pin = 27
+pin_list = [18, 19, 21, 34, 35, 37, 33, 25]
+trig_pin = 15
 
 with open("./lib/sensor/sensor_ir.h", "w") as f:
     head = "// THIS FILE IS AUTO-GENERATED\n\n" + \
