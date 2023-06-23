@@ -19,6 +19,9 @@
 */
 uint32_t get_min(uint32_t* array, uint32_t len);
 
+float timeToDist(uint32_t startTime, uint32_t endTime);
+
+
 /* Main sensor task (loop)
  
 * Parameters:

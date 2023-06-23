@@ -12,6 +12,10 @@ uint32_t get_min(uint32_t* array, uint32_t len){
     return min_val;
 }
 
+float timeToDist(uint32_t startTime, uint32_t endTime) {
+    return ((float)(endTime - startTime-2300) * 0.024);
+}
+
 void sensorLoop(void* p){
 
     MIDI_CREATE_DEFAULT_INSTANCE();
@@ -27,7 +31,8 @@ void sensorLoop(void* p){
         vTaskDelay(200 / portTICK_PERIOD_MS);
 
         uint32_t min_time = get_min(timings, NUM_SENSORS);
-        float dist = ((float)(min_time - start-2300) * 0.024);
+        // float dist = ((float)(min_time - start-2300) * 0.024);
+        float dist = timeToDist(start, min_time);
 
         // bool sw = digitalRead(SWITCH_PIN);
         bool sw = false;
@@ -36,9 +41,15 @@ void sensorLoop(void* p){
             MIDI.sendControlChange(0, dist2midi(dist), 1);
         }
         else{
-            Serial.print("Distance = ");
+
+            for (int i = 0; i < NUM_SENSORS; i++)
+            {
+                Serial.print(timeToDist(start, timings[i]));
+                Serial.print(" \t");
+            }
+            Serial.print("min: ");
             Serial.print(dist);
-            Serial.println(" cm");
+            Serial.println(" cm \t");
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
