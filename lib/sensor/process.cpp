@@ -21,8 +21,10 @@ void sensorLoop(void* p){
     MIDI_CREATE_DEFAULT_INSTANCE();
     MIDI.begin(MIDI_CHANNEL_OMNI);
     Serial.begin(115200);
-    pinMode(SWITCH_PIN, INPUT);
+    // pinMode(SWITCH_PIN, INPUT);
     init_ISRs();
+
+    uint32_t consecutiveDetections = 0;
 
     delay(300);
 
@@ -34,11 +36,19 @@ void sensorLoop(void* p){
         // float dist = ((float)(min_time - start-2300) * 0.024);
         float dist = timeToDist(start, min_time);
 
+        if (dist < INTRUSION_DISTANCE) {
+            consecutiveDetections++;
+        } else {
+            consecutiveDetections = 0;
+        }
+
         // bool sw = digitalRead(SWITCH_PIN);
         bool sw = false;
 
         if(sw){
-            MIDI.sendControlChange(0, dist2midi(dist), 1);
+            // MIDI.sendControlChange(0, dist2midi(dist), 1);
+            uint8_t midiVal = consecutiveDetections >= INTRUSION_INTERVAL ? 127 : 0;
+            MIDI.sendControlChange(0, midiVal, 1);
         }
         else{
 
@@ -50,6 +60,10 @@ void sensorLoop(void* p){
             Serial.print("min: ");
             Serial.print(dist);
             Serial.println(" cm \t");
+
+            if (consecutiveDetections >= INTRUSION_INTERVAL) {
+                Serial.println("ALARM!");
+            }
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
