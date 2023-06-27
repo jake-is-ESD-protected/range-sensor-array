@@ -32,13 +32,11 @@ void sensorLoop(void *p)
 
     uint32_t detections = 0;
 #ifdef INTRUSION_DETECTION_VIA_LIST
-    std::list<float> distHist {};
+    std::list<float> distHist{};
     for (uint8_t i = 0; i < INTRUSION_HISTORY_LENGTH; i++)
     {
-        distHist.push_back((float)10000);
+        distHist.push_back((float)10000);   // arbitrary high number that is greater than the INTRUSION_DISTANCE
     }
-    
-
 #endif
 
     delay(300);
@@ -49,7 +47,6 @@ void sensorLoop(void *p)
         vTaskDelay(100 / portTICK_PERIOD_MS);
 
         uint32_t min_time = get_min(timings, NUM_SENSORS);
-        // float dist = ((float)(min_time - start-2300) * 0.024);
         float dist = timeToDist(start, min_time);
 
 #ifndef INTRUSION_DETECTION_VIA_LIST
@@ -83,7 +80,7 @@ void sensorLoop(void *p)
         if (sw)
         {
             // MIDI.sendControlChange(0, dist2midi(dist), 1);
-            uint8_t midiVal = detections >= INTRUSION_INTERVAL ? 127 : 0;
+            uint8_t midiVal = detections >= INTRUSION_INTERVAL ? 127 : 0;  // binary version
             MIDI.sendControlChange(0, midiVal, 1);
         }
         else
