@@ -32,7 +32,13 @@ void sensorLoop(void *p)
 
     uint32_t detections = 0;
 #ifdef INTRUSION_DETECTION_VIA_LIST
-    std::list<float> distHist(5);
+    std::list<float> distHist {};
+    for (uint8_t i = 0; i < INTRUSION_HISTORY_LENGTH; i++)
+    {
+        distHist.push_back((float)10000);
+    }
+    
+
 #endif
 
     delay(300);

@@ -9,6 +9,7 @@
 // #define C 343           // speed of sounds
 #define INTRUSION_DISTANCE 20
 #define INTRUSION_INTERVAL 3
+#define INTRUSION_HISTORY_LENGTH 5
 #define INTRUSION_DETECTION_VIA_LIST    // uncomment to use a "3 out of 5" kind of filtering. comment this to use "3 in a row"
 
 /* Get smallest number (positive value) in array.
