@@ -1,5 +1,8 @@
-pin_list = [18, 19, 21, 34, 35, 37, 33, 25]
+# for test stack:
+pin_list = [18, 19, 21, 34, 35, 37, 33]
 trig_pin = 15
+# for ring:
+
 
 with open("./lib/sensor/sensor_ir.h", "w") as f:
     head = "// THIS FILE IS AUTO-GENERATED\n\n" + \

@@ -31,10 +31,6 @@ void IRAM_ATTR pin33_ISR(void){
 	timings[6] = micros();
 }
 
-void IRAM_ATTR pin25_ISR(void){
-	timings[7] = micros();
-}
-
 void init_ISRs(void){
 	pinMode(15, OUTPUT);
 	pinMode(18, INPUT);
@@ -51,8 +47,6 @@ void init_ISRs(void){
 	attachInterrupt(37, pin37_ISR, FALLING);
 	pinMode(33, INPUT);
 	attachInterrupt(33, pin33_ISR, FALLING);
-	pinMode(25, INPUT);
-	attachInterrupt(25, pin25_ISR, FALLING);
 }
 
 uint32_t trigger(uint32_t len){

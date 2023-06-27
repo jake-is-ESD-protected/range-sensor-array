@@ -1,6 +1,7 @@
 #include "sensor_ir.h"
 #include "process.h"
 #include "MIDI.h"
+// #include <list>
 
 uint32_t get_min(uint32_t* array, uint32_t len){
     uint32_t min_val = array[0];
@@ -25,6 +26,19 @@ void sensorLoop(void* p){
     init_ISRs();
 
     uint32_t consecutiveDetections = 0;
+
+    // uint8_t detectionsInList = 0;
+    // std::list<float> distHist(5);
+    // for (std::list<float>::iterator it = distHist.begin(); it != distHist.end(); ++it) {
+    //     float x = *it;
+    //     Serial.println(x);
+    // }
+    // for (auto const& x : distHist) {
+    //     Serial.println(x);
+    //     if (x < INTRUSION_DISTANCE) {
+    //         detectionsInList++;
+    //     }
+    // }
 
     delay(300);
 
