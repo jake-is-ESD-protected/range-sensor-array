@@ -46,7 +46,7 @@ void sensorLoop(void *p)
     while (1)
     {
         uint32_t start = trigger(1);
-        vTaskDelay(200 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
 
         uint32_t min_time = get_min(timings, NUM_SENSORS);
         // float dist = ((float)(min_time - start-2300) * 0.024);
@@ -103,7 +103,7 @@ void sensorLoop(void *p)
                 Serial.println("ALARM!");
             }
         }
-        vTaskDelay(100 / portTICK_PERIOD_MS);
+        vTaskDelay(10 / portTICK_PERIOD_MS);
     }
 }
 
