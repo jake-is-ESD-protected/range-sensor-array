@@ -6,7 +6,7 @@
 #define LOW_MAP 0       // lowest distance value
 #define HIGH_MAP 250    // highest distance value (cm)
 // #define SWITCH_PIN 15   // pin for manual serial/MIDI change (hardware switch)
-#define INTRUSION_DISTANCE 180
+#define INTRUSION_DISTANCE 200
 #define INTRUSION_INTERVAL 3
 #define INTRUSION_HISTORY_LENGTH 5
 #define INTRUSION_DETECTION_VIA_LIST    // uncomment to use a "3 out of 5" kind of filtering. comment this to use "3 in a row"
