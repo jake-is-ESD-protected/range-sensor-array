@@ -18,7 +18,7 @@ uint32_t get_min(uint32_t *array, uint32_t len)
 
 float timeToDist(uint32_t startTime, uint32_t endTime)
 {
-    return ((float)(endTime - startTime - 2300) * 0.024);
+    return ((float)(endTime - startTime - 2300) * 0.022);
 }
 
 void sensorLoop(void *p)
