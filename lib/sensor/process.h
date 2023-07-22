@@ -22,7 +22,16 @@
 */
 uint32_t get_min(uint32_t* array, uint32_t len);
 
-/* Converts sensor ping times to approximated distance */
+/* Converts sensor ping times to approximated distance. 
+
+* Parameters:
+    uint32_t startTime: timestamp of sensor trigger action
+    uint32_t endTime: timestamp of return signal detection
+
+* Returns:
+    float approximative distance from object to sensor.
+
+*/
 float timeToDist(uint32_t startTime, uint32_t endTime);
 
 
